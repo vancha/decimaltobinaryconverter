@@ -5,7 +5,7 @@ use gio::prelude::*;
 use gtk::prelude::*;
 
 use std::env::args;
-fn i32_to_binary_string(number: i32) -> String {
+fn i32_to_binary_string(number: u128) -> String {
     format!("{:b}", number).chars().collect()
 }
 
@@ -30,7 +30,7 @@ fn build_ui(application: &gtk::Application) {
         let u: Option<String> = Some(edit2.get_text().unwrap().to_string());
         match u {
             Some(value) => {
-                match value.parse::<i32>() {
+                match value.parse::<u128>() {
                     Ok(t) => {                       
                         label2.set_text(i32_to_binary_string(t).as_str());
                     }
